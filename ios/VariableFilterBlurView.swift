@@ -127,6 +127,9 @@ public class VariableBlurUIView: UIVisualEffectView {
 
         /// Replace the standard filters (i.e. `gaussianBlur`, `colorSaturate`, etc.) with only the variableBlur.
         backdropLayer?.filters = [variableBlur]
+
+        // Set the scale to the screen scale rather than a fixed value like 15
+        backdropLayer?.setValue(UIScreen.main.scale, forKey: "scale")
     }
 
     @available(*, unavailable)

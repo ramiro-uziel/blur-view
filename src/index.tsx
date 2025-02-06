@@ -5,11 +5,18 @@ import {
   ViewStyle,
 } from 'react-native';
 
+if (Platform.OS !== 'ios') {
+  throw new Error(
+    "The '@candlefinance/blur-view' package is iOS only. " +
+      'Please ensure you are running the app on an iOS device or simulator.'
+  );
+}
+
 const LINKING_ERROR =
-  `The package '@candlefinance/blur-view' doesn't seem to be linked. Make sure: \n\n` +
-  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
-  '- You rebuilt the app after installing the package\n' +
-  '- You are not using Expo Go\n';
+  `The package '@candlefinance/blur-view' doesn't seem to be linked properly.\n` +
+  "- Make sure you have run 'pod install' in the ios directory.\n" +
+  '- Rebuild your app after installing the package.\n' +
+  '- Ensure you are not using Expo Go.\n';
 
 type BlurViewProps = {
   style: ViewStyle;
